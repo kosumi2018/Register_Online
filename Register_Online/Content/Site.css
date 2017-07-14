@@ -22,3 +22,12 @@ select,
 textarea {
     max-width: 280px;
 }
+footer{
+    padding-top:20px;
+    padding-bottom:20px;
+    background-color:grey;
+}
+footer p{
+    margin:auto,auto;
+    text-align:center;
+}
