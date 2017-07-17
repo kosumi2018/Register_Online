@@ -165,9 +165,12 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\StudentAccsController.cs" />
+    <Compile Include="Controllers\StudentsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Register.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -219,10 +222,19 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\StudentAccs\Create.cshtml" />
+    <Content Include="Views\StudentAccs\Delete.cshtml" />
+    <Content Include="Views\StudentAccs\Details.cshtml" />
+    <Content Include="Views\StudentAccs\Edit.cshtml" />
+    <Content Include="Views\StudentAccs\Index.cshtml" />
+    <Content Include="Views\Students\Create.cshtml" />
+    <Content Include="Views\Students\Delete.cshtml" />
+    <Content Include="Views\Students\Details.cshtml" />
+    <Content Include="Views\Students\Edit.cshtml" />
+    <Content Include="Views\Students\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -232,6 +244,10 @@
     <ProjectReference Include="..\DataModels\DataModels.csproj">
       <Project>{dede4105-035f-43bd-af82-c9e87ce83a19}</Project>
       <Name>DataModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\InitDatabase\InitDatabase.csproj">
+      <Project>{290965d2-8e2f-4f9d-a402-da4187f08556}</Project>
+      <Name>InitDatabase</Name>
     </ProjectReference>
     <ProjectReference Include="..\MyTools\MyTools.csproj">
       <Project>{638cd34b-52b2-4467-843f-8c6c34f66025}</Project>

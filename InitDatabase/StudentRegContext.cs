@@ -15,5 +15,6 @@ namespace InitDatabase
         public DbSet<StudentAcc> StudentAccs { get; set; }
         public DbSet<Specialty> Specialtys { get; set; }
         public DbSet<Period_Category> Period_Categorys { get; set; }
+        public DbSet<Nation> Nations { get; set; }
     }
 }

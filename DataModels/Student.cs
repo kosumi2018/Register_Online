@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,44 +14,63 @@ namespace DataModels
     public class Student
     {
         [DisplayName("序号")]
-        public int Id { get; set; }
+        public int StudentId { get; set; }
         [DisplayName("准考证号")]
+        [RegularExpression(@"^[0-9]+$",ErrorMessage ="数字准考证号")]
         public string CardNumber { get; set; }
         [DisplayName("学生姓名")]
+        [Required(ErrorMessage = "必填字段")]
+        [RegularExpression(@"^[\u4E00-\u9FFF]+$",ErrorMessage ="请输入你的中文名")]
         public string StudentName { get; set; }
         [DisplayName("性别")]
         public string Sex { get; set; }
         [DisplayName("民族")]
-        public string Nation { get; set; }
+        public int NationId { get; set; }
+        public Nation Nation { get; set; }
         [DisplayName("出生日期")]
+        [Required(ErrorMessage = "必填字段")]
+        [RegularExpression(@"^(19|20)\d{2}-(1[0-2]|0?[1-9])-(0?[1-9]|[1-2][0-9]|3[0-1])$",ErrorMessage ="生日格式不对")]
         public string Birthday { get; set; }
         [DisplayName("籍贯")]
+        [RegularExpression(@"^[\u4E00-\u9FFF]+$", ErrorMessage = "请输入中文")]
         public string NativePlace { get; set; }
         [DisplayName("联系电话")]
+        [Required(ErrorMessage = "必填字段")]
+        [RegularExpression(@"^[0-9]+$", ErrorMessage = "数字")]
         public string TelNumber { get; set; }
         [DisplayName("毕业学校")]
+        [RegularExpression(@"^[\u4E00-\u9FFF]+$", ErrorMessage = "请输入中文")]
         public string SchoolName { get; set; }
         [DisplayName("家庭住址")]
+        [RegularExpression(@"^[\u4E00-\u9FFF]+$", ErrorMessage = "请输入中文")]
         public string Adress { get; set; }
         [DisplayName("邮政编码")]
+        [RegularExpression(@"^[1-9]\d{5}(?!\d)+$", ErrorMessage = "6位数字邮政编码")]
         public string ZipCode { get; set; }
         [DisplayName("家长姓名")]
+        [RegularExpression(@"^[\u4E00-\u9FFF]+$", ErrorMessage = "请输入中文")]
         public string Patriarch { get; set; }
         [DisplayName("家长电话")]
         public string Pat_Telnum { get; set; }
         [DisplayName("委托人员")]
+        [RegularExpression(@"^[\u4E00-\u9FFF]+$", ErrorMessage = "请输入中文")]
         public string Mandator { get; set; }
         [DisplayName("统考科目分")]
+        [RegularExpression(@"^[0-9]+$", ErrorMessage = "数字")]
         public int UnifiedScore { get; set; }
         [DisplayName("总分")]
+        [RegularExpression(@"^[0-9]+$", ErrorMessage = "数字")]
         public int TotalPoints { get; set; }
         [DisplayName("照片")]
         public string PicUrl { get; set; }
-        [DisplayName("个人简介")]
-        public string Resume { get; set; }
         [DisplayName("选报专业")]
-        public string ChooseSpecialty { get; set; }
+        public int SpecialtyId { get; set; }
+        public Specialty Specialty { get; set; }
         [DisplayName("学制")]
-        public string CategoryName { get; set; }
+        public int CategoryId { get; set; }
+        public Period_Category Category { get; set; }
+        [DisplayName("用户名")]
+        public int StudentAccId { get; set; }
+        public StudentAcc Acc { get; set; }
     }
 }
