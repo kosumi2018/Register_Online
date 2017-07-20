@@ -9,9 +9,11 @@ using System.Web;
 using System.Web.Mvc;
 using DataModels;
 using InitDatabase;
+using Register_Online.Filters;
 
 namespace Register_Online.Controllers
 {
+    [Admin]
     public class AdminController : Controller
     {
         private StudentRegContext db = new StudentRegContext();

@@ -31,6 +31,7 @@ namespace Register_Online.Controllers
             return View(await students);
         }
         // GET: Student/Details/5
+        [Student]
         public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
@@ -63,6 +64,7 @@ namespace Register_Online.Controllers
         }
 
         // GET: Student/Create //五年制大专报名
+        [Student]
         public ActionResult Create(int? id)
         {
             if (id == null)
@@ -87,6 +89,7 @@ namespace Register_Online.Controllers
         // POST: Student/Create //五年制大专报名
         // 为了防止“过多发布”攻击，请启用要绑定到的特定属性，有关 
         // 详细信息，请参阅 https://go.microsoft.com/fwlink/?LinkId=317598。
+        [Student]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create([Bind(Include = "StudentId,CardNumber,StudentName,Sex,NationId,Birthday,CNumber,NativePlace,TelNumber,SchoolName,Adress,ZipCode,Patriarch,Pat_Telnum,Mandator,UnifiedScore,TotalPoints,SpecialtyId,Period_CategoryId,StudentAccId")] Student student)
@@ -117,6 +120,7 @@ namespace Register_Online.Controllers
         }
 
         // GET: Student/Edit/5 //五年制大专
+        [Student]
         public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
@@ -158,6 +162,7 @@ namespace Register_Online.Controllers
         // 为了防止“过多发布”攻击，请启用要绑定到的特定属性，有关 
         // 详细信息，请参阅 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
+        [Student]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit([Bind(Include = "StudentId,CardNumber,StudentName,Sex,NationId,Birthday,CNumber,NativePlace,TelNumber,SchoolName,Adress,ZipCode,Patriarch,Pat_Telnum,Mandator,UnifiedScore,TotalPoints,SpecialtyId,Period_CategoryId,StudentAccId")] Student student)
         {
