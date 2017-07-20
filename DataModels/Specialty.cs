@@ -17,7 +17,8 @@ namespace DataModels
         [DisplayName("专业名称")]
         public string SpecialtyName { get; set; }
         [DisplayName("专业学制")]
-        public string Period { get; set; }
+        public int Period_CategoryId { get; set; }
+        public Period_Category Period_Category { get; set; }
         [DisplayName("专业学费")]
         public int Tuition { get; set; }
     }

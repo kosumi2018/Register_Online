@@ -1,0 +1,179 @@
+﻿@model DataModels.Student
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>删除</h2>
+
+<h3>确定要删除这条记录吗?</h3>
+<div>
+    <h4>学生信息</h4>
+    <hr />
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                学生帐号
+            </dt>
+
+            <dd>
+                @ViewBag.Acc
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Nation.NationName)
+            </dt>
+
+            <dd>
+                @ViewBag.NationName
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Specialty.SpecialtyName)
+            </dt>
+
+            <dd>
+                @ViewBag.specialtyName
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CardNumber)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CardNumber)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.StudentName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.StudentName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Sex)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Sex)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Birthday)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Birthday)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CNumber)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CNumber)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.NativePlace)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.NativePlace)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.TelNumber)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TelNumber)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.SchoolName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.SchoolName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Adress)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Adress)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ZipCode)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ZipCode)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Patriarch)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Patriarch)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Pat_Telnum)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Pat_Telnum)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Mandator)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Mandator)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.UnifiedScore)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.UnifiedScore)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.TotalPoints)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TotalPoints)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Period_CategoryId)
+            </dt>
+
+            <dd>
+                @ViewBag.CategoryName
+            </dd>
+
+        </dl>
+    </div>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="删除学生信息" class="btn btn-danger" /> |
+            @Html.ActionLink("返回首页", "Index",null,new { @class= "btn btn-primary" })
+        </div>
+    }
+</div>

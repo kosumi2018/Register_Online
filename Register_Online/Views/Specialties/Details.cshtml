@@ -1,0 +1,42 @@
+﻿@model DataModels.Specialty
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Specialty</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Period_Category.CategoryName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Period_Category.CategoryName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SpecialtyName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SpecialtyName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tuition)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tuition)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.SpecialtyId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

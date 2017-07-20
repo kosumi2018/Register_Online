@@ -31,6 +31,9 @@ namespace DataModels
         [Required(ErrorMessage = "必填字段")]
         [RegularExpression(@"^(19|20)\d{2}-(1[0-2]|0?[1-9])-(0?[1-9]|[1-2][0-9]|3[0-1])$",ErrorMessage ="生日格式不对")]
         public string Birthday { get; set; }
+        [DisplayName("身份证号码")]
+        [RegularExpression(@"^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}([0-9]|X)$",ErrorMessage = "身份证号码有误")]
+        public string CNumber { get; set; }
         [DisplayName("籍贯")]
         [RegularExpression(@"^[\u4E00-\u9FFF]+$", ErrorMessage = "请输入中文")]
         public string NativePlace { get; set; }
@@ -42,7 +45,7 @@ namespace DataModels
         [RegularExpression(@"^[\u4E00-\u9FFF]+$", ErrorMessage = "请输入中文")]
         public string SchoolName { get; set; }
         [DisplayName("家庭住址")]
-        [RegularExpression(@"^[\u4E00-\u9FFF]+$", ErrorMessage = "请输入中文")]
+        [RegularExpression(@"^[a-zA-Z0-9\u4E00-\u9FFF]+$", ErrorMessage = "请输入中文")]
         public string Adress { get; set; }
         [DisplayName("邮政编码")]
         [RegularExpression(@"^[1-9]\d{5}(?!\d)+$", ErrorMessage = "6位数字邮政编码")]
@@ -60,17 +63,16 @@ namespace DataModels
         public int UnifiedScore { get; set; }
         [DisplayName("总分")]
         [RegularExpression(@"^[0-9]+$", ErrorMessage = "数字")]
-        public int TotalPoints { get; set; }
-        [DisplayName("照片")]
-        public string PicUrl { get; set; }
+        public int TotalPoints { get; set; }        
         [DisplayName("选报专业")]
         public int SpecialtyId { get; set; }
         public Specialty Specialty { get; set; }
         [DisplayName("学制")]
-        public int CategoryId { get; set; }
-        public Period_Category Category { get; set; }
-        [DisplayName("用户名")]
+        public int Period_CategoryId { get; set; }
+        [DisplayName("QQ号或者手机号")]
         public int StudentAccId { get; set; }
-        public StudentAcc Acc { get; set; }
+        public StudentAcc StudentAcc { get; set; }
+        [DisplayName("报名时间")]
+        public DateTime Time { get; set; }
     }
 }

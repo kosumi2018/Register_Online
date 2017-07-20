@@ -1,0 +1,99 @@
+﻿@model IEnumerable<DataModels.Student>
+@using X.PagedList
+@using X.PagedList.Mvc
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="container text-right" style="padding-top:10px;">
+    @foreach (var item in ViewBag.XZ as List<DataModels.Period_Category>)
+    {
+        <a class="btn btn-primary"  href="~/Student/Index/@item.Period_CategoryId" target="_self">查看 @item.CategoryName 学生名单</a>
+    }
+    
+</div>
+<hr />
+<h2>@ViewBag.NZMC</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.StudentName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sex)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Birthday)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nation.NationName)
+        </th>        
+        <th>
+            @Html.DisplayNameFor(model => model.NativePlace)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TelNumber)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.UnifiedScore)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TotalPoints)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Specialty.SpecialtyName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.StudentName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sex)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Birthday)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nation.NationName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NativePlace)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.TelNumber)
+        </td>
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.UnifiedScore)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TotalPoints)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Specialty.SpecialtyName)
+        </td>
+        <td>
+            @Html.ActionLink("浏览", "Details", new { id=item.StudentId }) |
+            @Html.ActionLink("删除", "Delete", new { id=item.StudentId })
+        </td>
+    </tr>
+}
+
+</table>
+<div class="text-center">
+    @Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page }))
+</div>

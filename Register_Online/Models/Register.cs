@@ -24,7 +24,9 @@ namespace Register_Online.Models
         [DataType(DataType.Password)]
         [Compare("Password",ErrorMessage ="密码不一致！")]
         public string Checkpwd { get; set; }
-        public Student Stu { get; set; }
-        
+        [DisplayName("验证码")]
+        [RegularExpression(@"^\d{4}$", ErrorMessage = "4位数字验证马")]
+        public string Codeimg { get; set; }
+
     }
 }

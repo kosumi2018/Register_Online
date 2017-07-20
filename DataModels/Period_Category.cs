@@ -13,7 +13,7 @@ namespace DataModels
     public class Period_Category
     {
         [DisplayName("编号")]
-        public int Id { get; set; }
+        public int Period_CategoryId { get; set; }
         [DisplayName("学制名称")]
         public string CategoryName { get; set; }
     }

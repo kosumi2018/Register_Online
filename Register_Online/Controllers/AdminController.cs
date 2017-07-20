@@ -12,116 +12,112 @@ using InitDatabase;
 
 namespace Register_Online.Controllers
 {
-    public class StudentAccsController : Controller
+    public class AdminController : Controller
     {
         private StudentRegContext db = new StudentRegContext();
 
-        public ActionResult Login()
+
+        public async Task<ActionResult> Login()
         {
-            return View();
+            return View(await db.SysAdmins.ToListAsync());
         }
-        [HttpPost]
-        public ActionResult Login([Bind(Include = "StudentAccId,StuAcc,Password")] StudentAcc studentAcc)
-        {
-            return View();
-        }
-        // GET: StudentAccs
+        // GET: Admin
         public async Task<ActionResult> Index()
         {
-            return View(await db.StudentAccs.ToListAsync());
+            return View(await db.SysAdmins.ToListAsync());
         }
 
-        // GET: StudentAccs/Details/5
+        // GET: Admin/Details/5
         public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            StudentAcc studentAcc = await db.StudentAccs.FindAsync(id);
-            if (studentAcc == null)
+            SysAdmin sysAdmin = await db.SysAdmins.FindAsync(id);
+            if (sysAdmin == null)
             {
                 return HttpNotFound();
             }
-            return View(studentAcc);
+            return View(sysAdmin);
         }
 
-        // GET: StudentAccs/Create
+        // GET: Admin/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: StudentAccs/Create
+        // POST: Admin/Create
         // 为了防止“过多发布”攻击，请启用要绑定到的特定属性，有关 
         // 详细信息，请参阅 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "StudentAccId,StuAcc,Password")] StudentAcc studentAcc)
+        public async Task<ActionResult> Create([Bind(Include = "Id,AdminName,Password")] SysAdmin sysAdmin)
         {
             if (ModelState.IsValid)
             {
-                db.StudentAccs.Add(studentAcc);
+                db.SysAdmins.Add(sysAdmin);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
-            return View(studentAcc);
+            return View(sysAdmin);
         }
 
-        // GET: StudentAccs/Edit/5
+        // GET: Admin/Edit/5
         public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            StudentAcc studentAcc = await db.StudentAccs.FindAsync(id);
-            if (studentAcc == null)
+            SysAdmin sysAdmin = await db.SysAdmins.FindAsync(id);
+            if (sysAdmin == null)
             {
                 return HttpNotFound();
             }
-            return View(studentAcc);
+            return View(sysAdmin);
         }
 
-        // POST: StudentAccs/Edit/5
+        // POST: Admin/Edit/5
         // 为了防止“过多发布”攻击，请启用要绑定到的特定属性，有关 
         // 详细信息，请参阅 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "StudentAccId,StuAcc,Password")] StudentAcc studentAcc)
+        public async Task<ActionResult> Edit([Bind(Include = "Id,AdminName,Password")] SysAdmin sysAdmin)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(studentAcc).State = EntityState.Modified;
+                db.Entry(sysAdmin).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            return View(studentAcc);
+            return View(sysAdmin);
         }
 
-        // GET: StudentAccs/Delete/5
+        // GET: Admin/Delete/5
         public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            StudentAcc studentAcc = await db.StudentAccs.FindAsync(id);
-            if (studentAcc == null)
+            SysAdmin sysAdmin = await db.SysAdmins.FindAsync(id);
+            if (sysAdmin == null)
             {
                 return HttpNotFound();
             }
-            return View(studentAcc);
+            return View(sysAdmin);
         }
 
-        // POST: StudentAccs/Delete/5
+        // POST: Admin/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            StudentAcc studentAcc = await db.StudentAccs.FindAsync(id);
-            db.StudentAccs.Remove(studentAcc);
+            SysAdmin sysAdmin = await db.SysAdmins.FindAsync(id);
+            db.SysAdmins.Remove(sysAdmin);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }

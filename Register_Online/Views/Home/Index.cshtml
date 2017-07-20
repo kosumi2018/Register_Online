@@ -1,11 +1,34 @@
-﻿@{
+﻿@model DataModels.Student
+@{
     ViewBag.Title = "在线报名";
 }
 
 <div class="jumbotron">
     <h2>江西陶瓷工艺美术职业技术学院--在线报名</h2>
     <p class="lead">在线报名包含两种学制报名，第一是五年制大专在线报名，第二是三年制大专单招报名。</p>
-    <p><a href="~/Reg/Index" class="btn btn-primary btn-lg">五年制大专报名 &raquo;</a>  <a href="http://asp.net" class="btn btn-primary btn-lg">单招报名 &raquo;</a></p>
+    @if (Convert.ToBoolean(Session["Student"]))
+    {
+        if (Model != null)
+        {
+            int id = Model.StudentId;
+            <p>你已报名成功！查看信息请点击=>><a href="~/Student/Details/@id" class="btn btn-info btn-lg">查看报名信息 &raquo;</a></p>
+        }
+        else
+        {
+            <p>
+                @foreach (var item in ViewBag.list as List<DataModels.Period_Category>)
+                {
+                    int id = item.Period_CategoryId;
+                    <a href="~/Student/Create/@id" class="btn btn-danger btn-lg">@item.CategoryName 报名 &raquo;</a>  
+                }
+            </p>
+        }
+
+    }
+    else
+    {
+        <p><a href="~/Login/Student_Reg" class="btn btn-primary btn-lg">在线报名入口 &raquo;</a></p>
+    }
 </div>
 
 <div class="row">
@@ -27,12 +50,14 @@
     </div>
     <div class="col-md-4">
         <h2>历史沿革</h2>
-        <p>1958年 江西省陶瓷学校<br />
-1979年 经江西省政府批准在现址复校，成立江西省景德镇陶瓷学校<br />
-1996年 增挂江西省工艺美术学校（按一校两牌模式办学）<br />
-2002年 经江西省政府批准，升格为公办全日制普通高等职业院校，更名江西陶瓷工艺美术职业技术学院<br />
-2010年 省级示范性高等职业院校<br />
-2011年 升格为副厅级事业单位</p>
+        <p>
+            1958年 江西省陶瓷学校<br />
+            1979年 经江西省政府批准在现址复校，成立江西省景德镇陶瓷学校<br />
+            1996年 增挂江西省工艺美术学校（按一校两牌模式办学）<br />
+            2002年 经江西省政府批准，升格为公办全日制普通高等职业院校，更名江西陶瓷工艺美术职业技术学院<br />
+            2010年 省级示范性高等职业院校<br />
+            2011年 升格为副厅级事业单位
+        </p>
         <p><a class="btn btn-default" href="http://www.jxgymy.com/xqzl.asp?nclassid=75&dy=2">查看详情 &raquo;</a></p>
     </div>
 </div>

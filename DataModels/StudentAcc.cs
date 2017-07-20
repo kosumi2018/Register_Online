@@ -17,12 +17,14 @@ namespace DataModels
         public int StudentAccId { get; set; }
         [Required(ErrorMessage = "必填字段")]
         [RegularExpression(@"^[0-9]+$", ErrorMessage = "QQ号或者手机号")]
-        [DisplayName("用户名")]
+        [DisplayName("QQ号或者手机号")]
         public string StuAcc { get; set; }
         [DisplayName("密码")]
         [Required(ErrorMessage = "必填")]
         [DataType(DataType.Password)]
         [RegularExpression(@"^[a-zA-Z0-9]{6,21}$", ErrorMessage = "输入6到21位字母或数字密码")]
         public string Password { get; set; }
+        [DisplayName("注册时间")]
+        public DateTime Time { get; set; }
     }
 }

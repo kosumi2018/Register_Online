@@ -12,11 +12,17 @@ namespace Register_Online
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-
+            
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
+                name: "StudentList",
+                url: "{controller}/{action}/{id}/{page}",
+                defaults: new { controller = "Student", action = "Index", id = UrlParameter.Optional, page = UrlParameter.Optional }
             );
         }
     }

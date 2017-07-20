@@ -12,116 +12,112 @@ using InitDatabase;
 
 namespace Register_Online.Controllers
 {
-    public class StudentAccsController : Controller
+    public class SpecialtiesController : Controller
     {
         private StudentRegContext db = new StudentRegContext();
 
-        public ActionResult Login()
-        {
-            return View();
-        }
-        [HttpPost]
-        public ActionResult Login([Bind(Include = "StudentAccId,StuAcc,Password")] StudentAcc studentAcc)
-        {
-            return View();
-        }
-        // GET: StudentAccs
+        // GET: Specialties
         public async Task<ActionResult> Index()
         {
-            return View(await db.StudentAccs.ToListAsync());
+            var specialtys = db.Specialtys.Include(s => s.Period_Category);
+            return View(await specialtys.ToListAsync());
         }
 
-        // GET: StudentAccs/Details/5
+        // GET: Specialties/Details/5
         public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            StudentAcc studentAcc = await db.StudentAccs.FindAsync(id);
-            if (studentAcc == null)
+            Specialty specialty = await db.Specialtys.FindAsync(id);
+            if (specialty == null)
             {
                 return HttpNotFound();
             }
-            return View(studentAcc);
+            return View(specialty);
         }
 
-        // GET: StudentAccs/Create
+        // GET: Specialties/Create
         public ActionResult Create()
         {
+            ViewBag.Period_CategoryId = new SelectList(db.Period_Categorys, "Period_CategoryId", "CategoryName");
             return View();
         }
 
-        // POST: StudentAccs/Create
+        // POST: Specialties/Create
         // 为了防止“过多发布”攻击，请启用要绑定到的特定属性，有关 
         // 详细信息，请参阅 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "StudentAccId,StuAcc,Password")] StudentAcc studentAcc)
+        public async Task<ActionResult> Create([Bind(Include = "SpecialtyId,SpecialtyName,Period_CategoryId,Tuition")] Specialty specialty)
         {
             if (ModelState.IsValid)
             {
-                db.StudentAccs.Add(studentAcc);
+                db.Specialtys.Add(specialty);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
-            return View(studentAcc);
+            ViewBag.Period_CategoryId = new SelectList(db.Period_Categorys, "Period_CategoryId", "CategoryName", specialty.Period_CategoryId);
+            return View(specialty);
         }
 
-        // GET: StudentAccs/Edit/5
+        // GET: Specialties/Edit/5
         public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            StudentAcc studentAcc = await db.StudentAccs.FindAsync(id);
-            if (studentAcc == null)
+            Specialty specialty = await db.Specialtys.FindAsync(id);
+            if (specialty == null)
             {
                 return HttpNotFound();
             }
-            return View(studentAcc);
+            ViewBag.Period_CategoryId = new SelectList(db.Period_Categorys, "Period_CategoryId", "CategoryName", specialty.Period_CategoryId);
+            return View(specialty);
         }
 
-        // POST: StudentAccs/Edit/5
+        // POST: Specialties/Edit/5
         // 为了防止“过多发布”攻击，请启用要绑定到的特定属性，有关 
         // 详细信息，请参阅 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "StudentAccId,StuAcc,Password")] StudentAcc studentAcc)
+        public async Task<ActionResult> Edit([Bind(Include = "SpecialtyId,SpecialtyName,Period_CategoryId,Tuition")] Specialty specialty)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(studentAcc).State = EntityState.Modified;
+                db.Entry(specialty).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            return View(studentAcc);
+            ViewBag.Period_CategoryId = new SelectList(db.Period_Categorys, "Period_CategoryId", "CategoryName", specialty.Period_CategoryId);
+            return View(specialty);
         }
 
-        // GET: StudentAccs/Delete/5
+        // GET: Specialties/Delete/5
         public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            StudentAcc studentAcc = await db.StudentAccs.FindAsync(id);
-            if (studentAcc == null)
+            Specialty specialty = await db.Specialtys.FindAsync(id);
+            if (specialty == null)
             {
                 return HttpNotFound();
             }
-            return View(studentAcc);
+            return View(specialty);
         }
 
-        // POST: StudentAccs/Delete/5
+        // POST: Specialties/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            StudentAcc studentAcc = await db.StudentAccs.FindAsync(id);
-            db.StudentAccs.Remove(studentAcc);
+            Specialty specialty = await db.Specialtys.FindAsync(id);
+            db.Specialtys.Remove(specialty);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }

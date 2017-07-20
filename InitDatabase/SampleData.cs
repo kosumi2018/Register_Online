@@ -9,13 +9,13 @@ namespace InitDatabase
         protected override void Seed(StudentRegContext context)
         {
             context.SysAdmins.Add(new SysAdmin { AdminName="admin-zsb", Password=Tools.MD5Encrypt32("admin@123") });
-            context.Specialtys.Add(new Specialty { SpecialtyName = "陶瓷设计与工艺", Period = "五年制大专", Tuition = 4100 });
-            context.Specialtys.Add(new Specialty { SpecialtyName = "雕刻艺术设计", Period = "五年制大专", Tuition = 4100 });
-            context.Specialtys.Add(new Specialty { SpecialtyName = "艺术设计", Period = "五年制大专", Tuition = 4100 });
-            context.Specialtys.Add(new Specialty { SpecialtyName = "动漫制作与技术", Period = "五年制大专", Tuition = 4100 });
-            context.Specialtys.Add(new Specialty { SpecialtyName = "陶瓷制造工艺", Period = "五年制大专", Tuition = 3600 });
-            context.Specialtys.Add(new Specialty { SpecialtyName = "汽车检测与维修技术", Period = "五年制大专", Tuition = 3600 });
-            context.Specialtys.Add(new Specialty { SpecialtyName = "电子商务", Period = "五年制大专", Tuition = 3100 });
+            context.Specialtys.Add(new Specialty { SpecialtyName = "陶瓷设计与工艺", Period_CategoryId=1, Tuition = 4100 });
+            context.Specialtys.Add(new Specialty { SpecialtyName = "雕刻艺术设计", Period_CategoryId = 1, Tuition = 4100 });
+            context.Specialtys.Add(new Specialty { SpecialtyName = "艺术设计", Period_CategoryId = 1, Tuition = 4100 });
+            context.Specialtys.Add(new Specialty { SpecialtyName = "动漫制作与技术", Period_CategoryId = 1, Tuition = 4100 });
+            context.Specialtys.Add(new Specialty { SpecialtyName = "陶瓷制造工艺", Period_CategoryId = 1, Tuition = 3600 });
+            context.Specialtys.Add(new Specialty { SpecialtyName = "汽车检测与维修技术", Period_CategoryId = 1, Tuition = 3600 });
+            context.Specialtys.Add(new Specialty { SpecialtyName = "电子商务", Period_CategoryId = 1, Tuition = 3100 });
             context.Period_Categorys.Add(new Period_Category { CategoryName = "五年制大专" });
             context.Period_Categorys.Add(new Period_Category { CategoryName = "单独招生" });
             context.Nations.Add(new Nation { NationName = "汉族" });

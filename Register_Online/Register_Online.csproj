@@ -164,12 +164,20 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\SpecialtiesController.cs" />
     <Compile Include="Controllers\StudentAccsController.cs" />
-    <Compile Include="Controllers\StudentsController.cs" />
+    <Compile Include="Controllers\StudentController.cs" />
+    <Compile Include="Filters\AdminAttribute.cs" />
+    <Compile Include="Filters\StudentAttribute.cs" />
+    <Compile Include="Filters\ValidateCode.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AdminLoginView.cs" />
+    <Compile Include="Models\LoginView.cs" />
     <Compile Include="Models\Register.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -222,16 +230,30 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Admin\Create.cshtml" />
+    <Content Include="Views\Admin\Delete.cshtml" />
+    <Content Include="Views\Admin\Details.cshtml" />
+    <Content Include="Views\Admin\Edit.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\StudentAccs\Create.cshtml" />
     <Content Include="Views\StudentAccs\Delete.cshtml" />
     <Content Include="Views\StudentAccs\Details.cshtml" />
     <Content Include="Views\StudentAccs\Edit.cshtml" />
     <Content Include="Views\StudentAccs\Index.cshtml" />
-    <Content Include="Views\Students\Create.cshtml" />
-    <Content Include="Views\Students\Delete.cshtml" />
-    <Content Include="Views\Students\Details.cshtml" />
-    <Content Include="Views\Students\Edit.cshtml" />
-    <Content Include="Views\Students\Index.cshtml" />
+    <Content Include="Views\Student\Create.cshtml" />
+    <Content Include="Views\Student\Delete.cshtml" />
+    <Content Include="Views\Student\Details.cshtml" />
+    <Content Include="Views\Student\Edit.cshtml" />
+    <Content Include="Views\Student\Index.cshtml" />
+    <Content Include="Views\Specialties\Create.cshtml" />
+    <Content Include="Views\Specialties\Delete.cshtml" />
+    <Content Include="Views\Specialties\Details.cshtml" />
+    <Content Include="Views\Specialties\Edit.cshtml" />
+    <Content Include="Views\Specialties\Index.cshtml" />
+    <Content Include="Views\Login\Student_Reg.cshtml" />
+    <Content Include="Views\Login\Student_Login.cshtml" />
+    <Content Include="Views\Login\Admin_Login.cshtml" />
+    <Content Include="Views\Student\CreateD.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

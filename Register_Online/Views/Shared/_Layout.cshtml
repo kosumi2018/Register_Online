@@ -22,7 +22,20 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("主页", "Index", "Home")</li>
+                   
                     <li>@Html.ActionLink("联系方式", "Contact", "Home")</li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    @if (Convert.ToBoolean(Session["Student"]) || Convert.ToBoolean(Session["Admin"]))
+                    {
+                        <li>@Html.ActionLink("用户："+@Session["Acc"].ToString(), "Index", "Home")</li>
+                        <li>@Html.ActionLink("退出系统", "Loginout", "Login")</li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("学生登陆", "Student_Login", "Login")</li>
+                        <li>@Html.ActionLink("注册", "Student_Reg", "Login")</li>
+                    }                   
                 </ul>
             </div>
         </div>
@@ -33,7 +46,7 @@
         <footer>
             <p>校址：江西省景德镇市新厂西路486号 电话：0798－8441370、8416651、8416652 传真：0798－8416652</p>
             <p>联系人：喻主任（13979881547）  余老师（13133988321） 电子邮件：E_mail:486zsb@163.com</p>
-            <p>Copyright 2017© All rights reserved.赣ICP备16000320号-1 | 技术支持：现代信息管理中心</p>
+            <p>Copyright 2017© All rights reserved.赣ICP备16000320号-1 | 技术支持：现代信息管理中心 @if(!Convert.ToBoolean(Session["Admin"])) {<a href="~/Login/Admin_Login">管理入口</a>}</p>
         </footer>
     </div>
 

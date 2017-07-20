@@ -18,7 +18,7 @@ namespace Register_Online
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            Database.SetInitializer(new SampleData());
+            //Database.SetInitializer(new SampleData());
         }
     }
 }
